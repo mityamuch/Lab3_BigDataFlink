@@ -1,0 +1,8 @@
+docker-compose build
+docker-compose up -d zookeeper kafka postgres
+docker-compose exec kafka kafka-topics --create --bootstrap-server kafka:9092 --replication-factor 1 --partitions 1 --topic pet-sales
+docker-compose up -d kafka-producer
+docker-compose up -d jobmanager taskmanager
+docker-compose up -d flink-job
+
+Посмотреть можно http://localhost:8081 ну и логи докера чтобы убедится что все работает
